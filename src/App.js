@@ -11,11 +11,10 @@ function App() {
     setHighScore(score);
   }
 
-	//score={score} highScore={highScore}
 	return (
 		<div>
-			<Scoreboard />
-			<Field />
+			<Scoreboard score={score} highScore={highScore}/>
+			<Field score={score} setScore={setScore}/>
 		</div>
 	);
 }
