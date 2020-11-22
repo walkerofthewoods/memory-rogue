@@ -1,54 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import shuffle from '../shuffle';
 import axios from 'axios';
 
+const deck = [];
+const order = [];
+
 const Field = () => {
-	// when we create a field, pick 12 random from API to start game with, add them to the state
-
-	// updateCards((cards) => [ ...cards, id ]);
-
-	const deck = [];
-	const order = [];
-
-	for (i=1; i<=731; i++) {
-		order.push(i);
+	for (let k = 1; k <= 731; k++) {
+		order.push(k);
 	}
 
 	shuffle(order);
+	
+	useEffect(() => {
+		const fetchData = async () => {
+			for (let i = 0; i < 4; i++) {
+				await axios
+					.get(`https://superheroapi.com/api/10114226739421973/${order[i]}/image`)
+					.then((resp) => {
+						deck.push({ name: resp.data.name, url: resp.data.url });
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			}
+		}
 
-	for (let i = 0; i < 12; i++) {
-		const info = axios.get(`https://superheroapi.com/api/10114226739421973/${id}/image`);
-		deck.push({name: info.name, url: info.url});
-	}
+		fetchData(deck, order);
+	}, []);
 
+	console.log(deck);
 
-
-	// each card has a click handler
-
-	return (
-		<div class="container">
-			<header>This is the playing field header</header>
-			<div class="row">
-				<div id=Card1 class="card">deck[0].name</div>
-				<div id=Card2 class="card">deck[1].name</div>
-				<div id=Card3 class="card">deck[2].name</div>
-        <div id=Card4 class="card">deck[3].name</div>
-			</div>
-			<div class="row">
-				<div class="card">deck[4].name</div>
-				<div class="card">deck[5].name</div>
-				<div class="card">deck[6].name</div>
-        <div class="card">deck[7].name</div>
-			</div>
-			<div class="row">
-				<div class="card">deck[8].name</div>
-				<div class="card">deck[9].name</div>
-				<div class="card">deck[10].name</div>
-        <div class="card">deck[11].name</div>
-			</div>
-			<footer>This is the footer</footer>
-		</div>
-	);
+	return <h2>deck={}</h2>;
 };
 
 export default Field;
+
+// each card has a click handler
+/* 	
+
+{deck.map((item, idx) => {
+				return <li key={idx}>{item}</li>;
+			})}
+
+<div className="row">
+		<div className="card">{deck[1].name}</div>
+		<div className="card">{deck[2].name}</div>
+		<div className="card">{deck[3].name}</div>
+	</div>
+	<div className="row">
+		<div className="card">{deck[4].name}</div>
+		<div className="card">{deck[5].name}</div>
+		<div className="card">{deck[6].name}</div>
+		<div className="card">{deck[7].name}</div>
+	</div>
+	<div className="row">
+		<div className="card">{deck[8].name}</div>
+		<div className="card">{deck[9].name}</div>
+		<div className="card">{deck[10].name}</div>
+		<div className="card">{deck[11].name}</div>
+	</div> */

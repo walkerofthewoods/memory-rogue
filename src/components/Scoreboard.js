@@ -1,11 +1,7 @@
 import React from 'react';
 
 const Scoreboard = (props) => {
-	return (
-		<header>
-			Memory Rogue Current Score:${props.score} Best Score ${props.bestScore}{' '}
-		</header>
-	);
+	return <h2>Memory Rogue Current Score: {props.score} High Score: {props.highScore}</h2>;
 };
 
 export default Scoreboard;

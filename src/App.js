@@ -1,16 +1,21 @@
+import React, { useState } from 'react';
 import './App.css';
+import Scoreboard from "./components/Scoreboard";
+import Field from "./components/Field";
 
 function App() {
-	const [ bestScore, score ] = useState(0);
+	const [ score, setScore ] = useState(0);
+	const [ highScore, setHighScore ] = useState(0);
 
-  if (score > bestScore) {
-    bestScore = useState(score);
+  if (score > highScore) {
+    setHighScore(score);
   }
 
+	//score={score} highScore={highScore}
 	return (
 		<div>
-			<Scoreboard score={score} bestScore={bestScore} />
-			<Field score={score} />
+			<Scoreboard />
+			<Field />
 		</div>
 	);
 }
