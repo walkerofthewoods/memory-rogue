@@ -1,7 +1,15 @@
 import React from 'react';
 
 const Scoreboard = (props) => {
-	return <h2>Rogues' Gallery Current Score: {props.score} High Score: {props.highScore}</h2>;
+	return (
+		<header>
+			<h2 style={{ float: 'left' }}>Rogues' Gallery</h2>
+			<h2 style={{ float: 'right' }}>
+				Current Score: {props.score} High Score: {props.highScore}
+			</h2>
+			<h4 style={{ textAlign: 'center' }}>How to play: Click each character exactly once.</h4>
+		</header>
+	);
 };
 
 export default Scoreboard;

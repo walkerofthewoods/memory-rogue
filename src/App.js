@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './App.css';
 import Scoreboard from "./components/Scoreboard";
 import Field from "./components/Field";
+import './index.css';
 
 function App() {
 	const [ score, setScore ] = useState(0);
@@ -14,7 +14,9 @@ function App() {
 	return (
 		<div>
 			<Scoreboard score={score} highScore={highScore}/>
+			<div className="wrapper">
 			<Field score={score} setScore={setScore}/>
+			</div>
 		</div>
 	);
 }
