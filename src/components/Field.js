@@ -16,7 +16,7 @@ const Field = (props) => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			for (let i = 0; i < 8; i++) {
+			for (let i = 0; i < 12; i++) {
 				try {
 					const response = await axios.get(
 						`https://superheroapi.com/api/10114226739421973/${order[0][i]}/image`
@@ -35,8 +35,6 @@ const Field = (props) => {
 	}, []);
 
 	function clicked(cardname) {
-		console.log(cardname);
-
 		let index = deck.findIndex((element) => element.name === cardname);
 
 		if (index >= 0) {
@@ -47,7 +45,7 @@ const Field = (props) => {
 
 		let temp = [ ...deck ];
 		temp[index].clicked = true;
-
+		shuffle(temp);
 		setDeck(temp);
 		props.setScore(props.score + 1);
 	}
@@ -61,6 +59,3 @@ const Field = (props) => {
 };
 
 export default Field;
-
-// each card needs a click handler  //onClick=
-// each card displays image

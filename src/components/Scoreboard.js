@@ -7,7 +7,7 @@ const Scoreboard = (props) => {
 			<h2 style={{ float: 'right' }}>
 				Current Score: {props.score} High Score: {props.highScore}
 			</h2>
-			<h4 style={{ textAlign: 'center' }}>How to play: Click each character exactly once.</h4>
+			<h4 style={{ textAlign: 'center' }}>How to win: Click on each character exactly once.</h4>
 		</header>
 	);
 };
