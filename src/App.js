@@ -7,15 +7,9 @@ function App() {
 	const [ score, setScore ] = useState(0);
 	const [ highScore, setHighScore ] = useState(0);
 
-	const boardSize = 12;
-
   if (score > highScore) {
     setHighScore(score);
   }
-
-	if (score == boardSize) {
-		alert('You win!');
-	}
 
 	return (
 		<div>
