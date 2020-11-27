@@ -15,10 +15,13 @@ const Field = (props) => {
 	const [ deck, setDeck ] = useState([]);
 	const [ order, setOrder ] = useState(deckSeed);
 
-	useEffect(() => {
-		setDeck([]);
-		fetchData();
-	}, []);
+	useEffect(
+		() => {
+			setDeck([]);
+			fetchData();
+		},
+		[ order ]
+	);
 
 	async function fetchData() {
 		for (let i = 0; i < boardSize; i++) {
@@ -37,16 +40,16 @@ const Field = (props) => {
 		if (index >= 0) {
 			if (deck[index].clicked === true) {
 				alert('you lose...');
-				props.setScore(-1); //reset
-				return;
+				props.setScore(0);
+				setOrder(shuffle(deckSeed)); //reset
 			}
 		}
 
 		props.setScore(props.score + 1);
 		if (props.score >= boardSize) {
 			alert('You win!');
-			props.setScore(-1); //reset
-			return;
+			props.setScore(0);
+			setOrder(shuffle(deckSeed)); //reset
 		}
 
 		let temp = [ ...deck ];
@@ -57,7 +60,7 @@ const Field = (props) => {
 
 	return deck.map((card) => (
 		<figure key={card.name} onClick={() => clicked(card.name)}>
-			<img className="card" src={card.url} alt={card.name} onError={() => props.setScore(-1)} />
+			<img className="card" src={card.url} alt={card.name} onError={() => setOrder(shuffle(deckSeed))} />
 			<figcaption>{card.name}</figcaption>
 		</figure>
 	));
