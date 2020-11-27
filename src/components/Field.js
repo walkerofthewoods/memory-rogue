@@ -23,7 +23,7 @@ const Field = (props) => {
 	async function fetchData() {
 		for (let i = 0; i < boardSize; i++) {
 			try {
-				const response = await axios.get(`https://superheroapi.com/api/10114226739421973/${order[i]}/image`);
+				const response = await axios.get(`/superheroproxy?id=${order[i]}`);
 				setDeck((deck) => [ ...deck, { name: response.data.name, url: response.data.url, clicked: false } ]);
 			} catch (err) {
 				console.log(err);
