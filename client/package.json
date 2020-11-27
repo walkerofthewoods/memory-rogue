@@ -1,0 +1,46 @@
+{
+	"name": "memory-rogue",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@testing-library/jest-dom": "^5.11.6",
+		"@testing-library/react": "^11.1.2",
+		"@testing-library/user-event": "^12.2.2",
+		"axios": "^0.21.0",
+		"express": "^4.17.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-scripts": "4.0.0",
+		"react-use-async": "0.0.16",
+		"web-vitals": "^0.2.4"
+	},
+	"scripts": {
+
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"start": "react-scripts start",
+		"heroku-postbuild": "cd client && npm install && npm run build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"eslintConfig": {
+		"extends": [ "react-app", "react-app/jest" ]
+	},
+	"browserslist": {
+		"production": [ ">0.2%", "not dead", "not op_mini all" ],
+		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+	},
+	"description": "memory game",
+	"main": "server.js",
+	"devDependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/walkerofthewoods/memory-rogue.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/walkerofthewoods/memory-rogue/issues"
+	},
+	"homepage": "https://github.com/walkerofthewoods/memory-rogue#readme"
+}
